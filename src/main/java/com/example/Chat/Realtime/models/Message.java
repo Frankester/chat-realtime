@@ -16,7 +16,7 @@ public class Message {
     private String message;
 
     @ManyToOne
-    @JoinColumn(name="id_usuario", referencedColumnName = "nombreDeUsuario")
+    @JoinColumn(name="id_usuario", referencedColumnName = "username")
     private Usuario usuario;
 
     @ManyToOne

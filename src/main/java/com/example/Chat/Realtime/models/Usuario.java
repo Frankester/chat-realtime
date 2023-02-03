@@ -1,5 +1,6 @@
 package com.example.Chat.Realtime.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -16,9 +17,11 @@ import java.util.List;
 public class Usuario {
 
     @Id
-    private String nombreDeUsuario;
+    private String username;
 
     private String email;
+
+    @JsonIgnore
     private String password;
 
     @ManyToMany(mappedBy = "usuarios")

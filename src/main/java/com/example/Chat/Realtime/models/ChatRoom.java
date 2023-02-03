@@ -20,7 +20,7 @@ public class ChatRoom {
     @JoinTable(
             name = "usuario_chat_room",
             joinColumns = @JoinColumn(name="id_chat_room",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name="id_usuario", referencedColumnName = "nombreDeUsuario")
+            inverseJoinColumns = @JoinColumn(name="id_usuario", referencedColumnName = "username")
     )
     private List<Usuario> usuarios;
 
@@ -30,7 +30,7 @@ public class ChatRoom {
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name="id_administrador", referencedColumnName = "nombreDeUsuario")
+    @JoinColumn(name="id_administrador", referencedColumnName = "username")
     private Usuario administrador;
 
     public ChatRoom(){
