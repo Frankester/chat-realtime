@@ -24,6 +24,7 @@ public class Usuario {
     @JsonIgnore
     private String password;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "usuarios")
     private List<ChatRoom> chatRooms;
 

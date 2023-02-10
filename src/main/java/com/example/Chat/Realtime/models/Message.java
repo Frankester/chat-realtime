@@ -1,12 +1,15 @@
 package com.example.Chat.Realtime.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Message {
 
     @Id
@@ -15,10 +18,11 @@ public class Message {
 
     private String message;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_usuario", referencedColumnName = "username")
     private Usuario usuario;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private ChatRoom chatRoom;

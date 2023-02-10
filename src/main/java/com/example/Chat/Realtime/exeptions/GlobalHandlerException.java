@@ -24,4 +24,26 @@ public class GlobalHandlerException {
     public ResponseEntity<Object> handlerAuthenticationException(Exception ex){
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getLocalizedMessage());
     }
+
+    @ExceptionHandler(ChatRoomNotFoundException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    String chatRoomNotFound(ChatRoomNotFoundException ex){
+        return ex.getLocalizedMessage();
+    }
+
+    @ExceptionHandler(NotAdminException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    String userNotAdmin(NotAdminException ex){
+        return ex.getLocalizedMessage();
+    }
+
+    @ExceptionHandler(UserNotMemberException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    String userNotMember(UserNotMemberException ex){
+        return ex.getLocalizedMessage();
+    }
+
 }
