@@ -15,15 +15,11 @@ import java.io.IOException;
 
 public class JwtAuthEntryPoint implements AuthenticationEntryPoint {
 
-    @Autowired
-    @Qualifier("handlerExceptionResolver")
-    private HandlerExceptionResolver resolver;
-
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
 
+        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getLocalizedMessage());
 
-        resolver.resolveException(request, response,null, authException);
 
     }
 }
